@@ -28,17 +28,17 @@ function StickMenu() {
                   {links.map((link, i) => {
                     const { label, icon, url } = link;
 
-                    return (
-                      <a href={url} key={i}>
-                        {icon} {label}
-                      </a>
-                    );
-
                     // return (
-                    //   <Link to={url} key={i}>
+                    //   <a href={url} key={i}>
                     //     {icon} {label}
-                    //   </Link>
+                    //   </a>
                     // );
+
+                    return (
+                      <Link to={url} key={i}>
+                        {icon} {label}
+                      </Link>
+                    );
                   })}
                 </div>
               </article>

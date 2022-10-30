@@ -4,7 +4,7 @@ import { useGlobalContext } from './context';
 import sublinks from './data';
 
 function Navbar() {
-  const { showStickMenu, showMainMenu } = useGlobalContext();
+  const { showStickMenu, showMainMenu, closeHomeMenu } = useGlobalContext();
 
   const displaySubMenu = e => {
     const menuName = e.target.textContent;
@@ -14,8 +14,14 @@ function Navbar() {
     showMainMenu(menuName, { center, bottom });
   };
 
+  const closerHomeMenu = e => {
+    if (!e.target.classList.contains('link-btn')) {
+      closeHomeMenu();
+    }
+  };
+
   return (
-    <nav className="nav">
+    <nav className="nav" onMouseOver={closerHomeMenu}>
       <div className="nav-center">
         <div className="nav-header">
           <img src="" alt="" className="nav-logo" />

@@ -7,7 +7,7 @@ const wholeAppCont = createContext();
 const AppProvider = ({ children }) => {
   const [stickMenuOpened, setStickMenuOpened] = useState(false);
   const [mainMenuOpened, setMainMenuOpened] = useState(false);
-  const [pages, setPages] = useState({ pager: '', links: [] });
+  const [pages, setPages] = useState({ page: '', links: [] });
   const [location, setLocation] = useState({});
 
   const showStickMenu = () => {
@@ -26,6 +26,10 @@ const AppProvider = ({ children }) => {
     setLocation(menuCoords);
   };
 
+  const closeHomeMenu = () => {
+    setMainMenuOpened(false);
+  };
+
   return (
     <wholeAppCont.Provider
       value={{
@@ -37,6 +41,8 @@ const AppProvider = ({ children }) => {
         setPages,
         pages,
         mainMenuOpened,
+        location,
+        closeHomeMenu,
       }}
     >
       {children}
